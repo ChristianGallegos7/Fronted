@@ -1,31 +1,53 @@
-<form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
-  <nz-form-item>
-    <nz-form-control nzErrorTip="Please input your username!">
-      <nz-input-wrapper>
-        <nz-icon nzInputPrefix nzType="user" />
-        <input type="text" nz-input formControlName="username" placeholder="Username" />
-      </nz-input-wrapper>
-    </nz-form-control>
-  </nz-form-item>
-  <nz-form-item>
-    <nz-form-control nzErrorTip="Please input your Password!">
-      <nz-input-password>
-        <nz-icon nzInputPrefix nzType="lock" />
-        <input nz-input formControlName="password" placeholder="Password" />
-      </nz-input-password>
-    </nz-form-control>
-  </nz-form-item>
-  <div nz-row class="login-form-margin">
-    <div nz-col [nzSpan]="12">
-      <label nz-checkbox formControlName="remember">
-        <span>Remember me</span>
-      </label>
-    </div>
-    <div nz-col [nzSpan]="12">
-      <a class="login-form-forgot">Forgot password</a>
-    </div>
+<div class="p-10 flex justify-center h-screen items-center fondo-barco">
+  <div class="overlay"></div>
+  <div class="rounded-lg p-10 shadow-2xl relative z-10">
+    <form
+      nz-form
+      [formGroup]="validateForm"
+      class="w-[400px]"
+      (ngSubmit)="submitForm()"
+    >
+      <div class="mb-8 text-center">
+        <h1 class="text-3xl text-white!">Bienvenido</h1>
+        <p class="text-gray-300 text-sm mt-1">Ingresa tus datos para acceder</p>
+      </div>
+
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Usuario es requerido!">
+          <nz-input-wrapper>
+            <nz-icon nzInputPrefix nzType="user" />
+            <input
+              type="text"
+              nz-input
+              formControlName="username"
+              placeholder="Username"
+              class="custom-input"
+            />
+          </nz-input-wrapper>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Contraseña es requerida!">
+          <nz-input-password>
+            <nz-icon nzInputPrefix nzType="lock" />
+            <input
+              nz-input
+              formControlName="password"
+              placeholder="Password"
+              class="custom-input"
+            />
+          </nz-input-password>
+        </nz-form-control>
+      </nz-form-item>
+
+      <div class="flex justify-end mb-6">
+        <a class="text-xs font-medium text-blue-500 hover:text-blue-600 transition-colors"
+          >¿Olvidaste tu contraseña?</a
+        >
+      </div>
+
+      <button nz-button nzBlock [nzType]="'primary'" class="login-button h-11">Iniciar Sesión</button>
+    </form>
   </div>
-  <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Log in</button>
-  Or
-  <a>register now!</a>
-</form>
+</div>

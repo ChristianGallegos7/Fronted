@@ -20,11 +20,12 @@ import { NzInputModule } from 'ng-zorro-antd/input';
   styleUrl: './login.css',
 })
 export class Login {
+
  private fb = inject(NonNullableFormBuilder);
+
   validateForm = this.fb.group({
     username: this.fb.control('', [Validators.required]),
     password: this.fb.control('', [Validators.required]),
-    remember: this.fb.control(true)
   });
 
   submitForm(): void {
