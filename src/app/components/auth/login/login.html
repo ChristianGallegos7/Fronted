@@ -1,12 +1,7 @@
 <div class="p-10 flex justify-center h-screen items-center fondo-barco">
   <div class="overlay"></div>
   <div class="rounded-lg p-10 shadow-2xl relative z-10">
-    <form
-      nz-form
-      [formGroup]="validateForm"
-      class="w-[400px]"
-      (ngSubmit)="submitForm()"
-    >
+    <form nz-form [formGroup]="validateForm" class="w-100" (ngSubmit)="submitForm()">
       <div class="mb-8 text-center">
         <h1 class="text-3xl text-white!">Bienvenido</h1>
         <p class="text-gray-300 text-sm mt-1">Ingresa tus datos para acceder</p>
@@ -42,12 +37,36 @@
       </nz-form-item>
 
       <div class="flex justify-end mb-6">
-        <a class="text-xs font-medium text-blue-500 hover:text-blue-600 transition-colors"
-          >¿Olvidaste tu contraseña?</a
-        >
+        <button nz-button [nzType]="'primary'" (click)="showModal()">
+          <span>¿Olvidaste tu contraseña?</span>
+        </button>
       </div>
 
-      <button nz-button nzBlock [nzType]="'primary'" class="login-button h-11">Iniciar Sesión</button>
+      <button nz-button nzBlock [nzType]="'primary'" class="login-button h-11">
+        Iniciar Sesión
+      </button>
     </form>
   </div>
 </div>
+
+<nz-modal
+  [(nzVisible)]="isVisible"
+  nzTitle="Recuperar Contraseña"
+  (nzOnCancel)="handleCancel()"
+  (nzOnOk)="handleOk()"
+>
+  <ng-container *nzModalContent>
+    <p>Ingresa tu número de cedula para recuperar tu contraseña.</p>
+    <p>La contraseña te llegara al correo electronico registrado.</p>
+    <nz-input-wrapper>
+      <nz-icon nzInputPrefix nzType="idcard" />
+      <input
+        type="number"
+        nz-input
+        formControlName="cedula"
+        placeholder="Ingresa tu cédula"
+        class="custom-input"
+      />
+    </nz-input-wrapper>
+  </ng-container>
+</nz-modal>
