@@ -1,0 +1,67 @@
+/* Si estás en un componente (Angular), esto centra el contenido del componente */
+:host {
+  display: block;
+  min-height: 100vh;
+  padding: 24px;
+  box-sizing: border-box;
+
+  /* Fondo opcional (puedes quitarlo si no quieres) */
+  background: #f5f5f5;
+
+  /* Centrado vertical + horizontal */
+  display: grid;
+  place-items: center;
+}
+
+/* La tarjeta (tu form) */
+.login-form {
+  width: 100%;
+  max-width: 320px; /* un poco más cómodo que 300 */
+  margin: 0 auto;
+  padding: 20px 18px;
+
+  background: #fff;
+  border: 1px solid #f0f0f0;
+  border-radius: 12px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+
+  box-sizing: border-box;
+}
+
+/* Espaciado entre items del form */
+.login-form nz-form-item {
+  margin-bottom: 12px;
+}
+
+/* Tu clase existente */
+.login-form-margin {
+  margin: 12px 0 16px;
+}
+
+/* Asegura que el row/cols alineen bien */
+.login-form-margin[nz-row] {
+  width: 100%;
+  align-items: center;
+}
+
+/* Forgot a la derecha, sin depender de float (más estable) */
+.login-form-forgot {
+  float: none; /* anulamos tu float */
+  display: inline-block;
+  width: 100%;
+  text-align: right;
+  font-size: 13px;
+}
+
+/* Botón full width */
+.login-form-button {
+  width: 100%;
+  height: 38px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+/* “Or register now!” más prolijo */
+.login-form > a {
+  margin-left: 4px;
+}
