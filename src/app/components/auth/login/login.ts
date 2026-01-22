@@ -18,7 +18,7 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
     NzButtonModule,
     NzCheckboxModule,
     NzModalModule,
-    NzIconModule
+    NzIconModule,
   ],
   templateUrl: './login.html',
   styleUrl: './login.css',
@@ -26,6 +26,7 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 export class Login {
   private fb = inject(NonNullableFormBuilder);
 
+  //#region Formulario de login
   validateForm = this.fb.group({
     username: this.fb.control('', [Validators.required]),
     password: this.fb.control('', [Validators.required]),
@@ -43,16 +44,41 @@ export class Login {
       });
     }
   }
+  //#endregion
 
-  // Modal olvido de contraseña
+  //#region Formulario de recuperar clave y modal
+
   isVisible = false;
+  isLoading = false;
+
+  recuperarClaveForm = this.fb.group({
+    cedula: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
+  });
 
   showModal(): void {
     this.isVisible = true;
   }
 
+  recuperarClave() {
+    if (this.recuperarClaveForm.invalid) return;
+    this.isLoading = true;
+
+    const { cedula } = this.recuperarClaveForm.value;
+
+    console.log('Iniciando recuperación para cédula:', cedula);
+
+    // TODO: Implementar llamada al servicio de backend
+    // Ejemplo: this.authService.requestPasswordReset(cedula).subscribe(...)
+
+    setTimeout(() => {
+      this.isLoading = false;
+      this.isVisible = false;
+      // Idealmente, mostrar un mensaje de éxito con NzMessageService aquí.
+    }, 2000);
+  }
+
   handleOk(): void {
-    console.log('Button ok clicked!');
+    this.recuperarClave();
     this.isVisible = false;
   }
 
@@ -60,4 +86,5 @@ export class Login {
     console.log('Button cancel clicked!');
     this.isVisible = false;
   }
+  //#endregion
 }

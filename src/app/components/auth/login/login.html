@@ -54,19 +54,26 @@
   nzTitle="Recuperar Contraseña"
   (nzOnCancel)="handleCancel()"
   (nzOnOk)="handleOk()"
+  [nzOkLoading]="isLoading"
 >
   <ng-container *nzModalContent>
     <p>Ingresa tu número de cedula para recuperar tu contraseña.</p>
     <p>La contraseña te llegara al correo electronico registrado.</p>
-    <nz-input-wrapper>
-      <nz-icon nzInputPrefix nzType="idcard" />
-      <input
-        type="number"
-        nz-input
-        formControlName="cedula"
-        placeholder="Ingresa tu cédula"
-        class="custom-input"
-      />
-    </nz-input-wrapper>
+    <form nz-form [formGroup]="recuperarClaveForm" class="w-100" (ngSubmit)="recuperarClave()">
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Cédula es requerida!">
+          <nz-input-wrapper>
+            <nz-icon nzInputPrefix nzType="idcard" />
+            <input
+              type="number"
+              nz-input
+              formControlName="cedula"
+              placeholder="Ingresa tu cédula"
+              class="custom-input"
+            />
+          </nz-input-wrapper>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
   </ng-container>
 </nz-modal>
